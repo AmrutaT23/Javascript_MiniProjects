@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR_Generator</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: plum;
+    }
+    html {
+      font-family: "Times New Roman", Times, serif;
+    }
+    .container {
+      display: grid;
+      place-items: center;
+      height: 100vh;
+    }
+    .box {
+      width: 400px;
+      /* height: 200px; */
+      background: white;
+      padding: 20px;
+    }
+    .upper,
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .upper h1 {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 32px;
+    }
+    form {
+      gap: 10px;
+      margin-top: 10px;
+    }
+    form input {
+      width: 100%;
+      height: 40px;
+      padding: 10px 15px;
+    }
+    form input:focus-visible {
+      border: 1px solid rgb(58, 4, 58);
+      outline: 1px solid rgb(58, 4, 58);
+    }
+    form button {
+      width: 100%;
+      height: 40px;
+      background: rgb(58, 4, 58);
+      border: none;
+      color: white;
+      opacity: 0.9;
+      transition: 0.3s ease-in;
+    }
+    form button:hover {
+      opacity: 1;
+    }
+    form button:active {
+      background: rgb(14, 4, 14);
+    }
+    .qr_container {
+      border: 1px solid rgb(58, 4, 58);
+      display: flex;
+      justify-content: center;
+
+      height: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in, height 0.1s ease;
+    }
+    .qr_container.show {
+      display: flex;
+      padding: 10px;
+      height: 169px;
+      opacity: 1;
+      transition: opacity 0.3s ease-in, height 0.1s ease;
+    }
+    .qr_container img {
+      height: 150px;
+    }
+    @media (max-width: 500px) {
+      .box {
+        width: 95%;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="box">
+        <section class="upper">
+          <h1>QR Code Generator</h1>
+          <p>Paste text to create QR Code</p>
+        </section>
+        <form id="qrform">
+          <input
+            id="qrinput"
+            type="text"
+            name="qrText"
+            placeholder="Enter Text"
+          />
+          <button id="qrbtn" type="submit">Generate QR Code</button>
+        </form>
+        <section id="qrcontainer" class="qr_container">
+          <img id="qrimg" src="QR_img.webp" alt="" />
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const qrform1 = document.getElementById("qrform");
+      const qrimg1 = document.getElementById("qrimg");
+      const qrcontainer1 = document.getElementById("qrcontainer");
+      const qrinput1 = document.getElementById("qrinput");
+      const qrbtn1 = document.getElementById("qrbtn");
+      
+      const renderQRcode = (url) => {
+        if (!url) return;
+        qrbtn1.innerText = "Generating QR Code.....";
+        qrimg1.src = url;
+    
+        const onImageLoad = () => {
+          const interval = setInterval(() => {
+            qrcontainer1.classList.add("show");
+            clearInterval(interval);
+            qrbtn1.innerText = "Generate QR Code";
+          }, 500);
+        };
+        qrimg1.addEventListener("load", onImageLoad); // Changed "Load" to "load"
+      };
+    
+      qrform1.addEventListener("submit", (event) => {
+        event.preventDefault();
+    
+        const formData = new FormData(qrform1);
+        const text = formData.get("qrText");
+        const qrcodeurl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text}`; // Removed extra space
+        renderQRcode(qrcodeurl);
+      });
+    
+      qrinput1.addEventListener("keyup", () => {
+        if (!qrinput1.value.trim()) {
+          qrcontainer1.classList.remove("show");
+        }
+      });
+    </script>
+    
+  </body>
+</html>
