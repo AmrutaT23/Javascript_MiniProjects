@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bat Ball Stump Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .choice_img{
+            width: 100px;
+            height: 110px;
+        }
+        .btn_img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50px;
+            border-color: greenyellow;
+            background-color: rgb(207, 235, 165);
+        }
+        .reset_btn{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bat Ball Stump Game</h1>
+    
+    <button class= "btn_img" onclick="
+         User = 'You have chosen Bat';
+        let computer_ch = computerch();
+         result = getResult('Bat',computer_ch);
+         getAlert(User,computer_ch,result);
+    "><img src="images/bat.png" alt="bat" class="choice_img"></button>
+
+    <button class= "btn_img" onclick="
+         User = 'You have chosen Ball';
+         computer_ch = computerch();
+         result = getResult('Ball',computer_ch);
+         getAlert(User,computer_ch,result);    
+         "><img src="images/ball.png" alt="ball" class="choice_img"></button>
+
+    <button  class= "btn_img" onclick="
+         User = 'You have chosen Stump';
+         computer_ch = computerch();
+         result = getResult('Stump',computer_ch);
+         getAlert(User,computer_ch,result);    
+         "><img src="images/stump.png" alt="stump" class="choice_img"></button>
+
+    
+
+    <h3 id="user_move"></h3>
+    <h3 id="com_move"></h3>
+    <h3 id="result_move"></h3>
+    <h3 id="score"></h3>
+
+
+    <button class = "reset_btn" onclick="localStorage.clear()
+    reset();
+    ">
+    Reset
+    </button>
+
+    <script>
+        let user;
+        let result;
+       
+        
+        function computerch() {
+            let random_no = Math.random() * 3;
+            if (random_no > 0 && random_no <= 1) {
+                return  'Bat';
+            } else if (random_no > 1 && random_no <= 2) {
+                return  'Ball';
+            } else if (random_no > 2 && random_no <= 3) {
+                return  'Stump';
+            }
+            
+            // return computer_ch;
+        }
+
+        function getResult(userMove,computerMove)
+    {
+            if(userMove === 'Bat')
+        {
+            if (computerMove === 'Bat') {
+                score.tie +=1;
+            return 'Tie';
+            } else if (computerMove === 'Ball') {
+                score.win +=1;
+                return 'User Won';
+            } else if (computerMove === 'Stump') {
+                score.lose +=1;
+                return 'Computer has Won';
+            }
+        }
+            else if (userMove === 'Ball')
+        {
+            if (computerMove === 'Ball') {
+                score.tie +=1;
+            return 'Tie';
+            } else if (computerMove === 'Bat') {
+                score.lose +=1;
+                return 'Computer has Won';
+            } else if (computerMove === 'Stump') {
+                score.win +=1;
+                return 'User Won';
+            }
+        }
+            else if (userMove === 'Stump') 
+        {
+            if (computerMove === 'Stump') {
+                score.tie +=1;
+            return 'Tie';
+            } else if (computerMove === 'Bat') {
+                score.lose +=1;
+                return 'Computer has Won';
+            } else if (computerMove === 'Ball') {
+                score.win +=1;
+                return 'User Won';
+            }
+        }
+    }
+
+    function getAlert(userMove,computerMove,result)
+    {
+        // alert(`${userMove}\nComputer Choice is ${computerMove}\n
+        // ${result}
+        // ${score.displayscore()}
+        // `);
+        localStorage.setItem('Score',JSON.stringify(score))
+        document.querySelector('#user_move').innerText= 
+        userMove !== undefined ? `${userMove}` : '';
+
+        document.querySelector('#com_move').innerText=
+        computerMove !== undefined ? `Computer Chosen ${computerMove}` : ''; 
+
+        document.querySelector('#result_move').innerText= 
+        userMove !== undefined ? `${result}` : '';
+;
+        document.querySelector('#score').innerText= score.displayscore();
+        
+        
+    }
+    let scoreStr = localStorage.getItem('Score');
+    let score;
+    reset(scoreStr);
+
+    function reset(scoreStr){
+         score = scoreStr? JSON.parse(scoreStr) : {
+        win:0,
+        lose:0,
+        tie:0,
+        };
+        score.displayscore = function(){
+           return `Win : ${score.win}; Lose : ${score.lose}; Tie : ${score.tie}`;
+        };
+        getAlert();
+    }
+    
+
+
+
+    // if (scoreStr !== undefined) {
+    //     score = JSON.parse(scoreStr);
+    // }else{
+    //      score ={
+    //     win:0,
+    //     lose:0,
+    //     tie:0,
+    //     };
+    // }
+   
+    </script>
+</body>
+</html>
