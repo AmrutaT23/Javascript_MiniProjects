@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom Cursor</title>
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Times New Roman", Times, serif;
+      color: white;
+    }
+    html,body {
+      height: 100%;
+      width: 100%;
+    }
+    #main{
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #cursor{
+      height: 20px;
+      width: 20px;
+      background-color: white;
+      mix-blend-mode: difference;
+      border-radius: 50%;
+      position: absolute;
+      border-top-left-radius: 3%;
+    border-top-right-radius: 42%;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 36%;
+      
+    }
+    h1{
+        font-size: 9vw;
+        font-weight: 900;
+    }
+</style>
+<body>
+    <div id="main">
+        <div id="cursor"></div>
+        <h1>Cursor Move</h1>
+    </div>
+    <script>
+        let cursor = document.querySelector("#cursor");
+        let main = document.querySelector("#main")
+        main.addEventListener("mousemove", function(e){
+        cursor.style.left = e.x+"px";
+        cursor.style.top = e.y+"px";
+
+        
+        })
+    
+    </script>
+</body>
+</html>
