@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
+    html,body{
+        height: 100%;
+        width: 100%;
+    }
+    #main{
+        width: 100%;
+        height: 100%;
+        background-color: #111;
+        position: relative;
+    }
+    .ele{
+        width: 100%;
+        height: 100px;
+        border-bottom: 2px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        
+    }
+    h1{
+        font-size: 60px;
+        position: relative;
+        z-index: 9;
+        mix-blend-mode: difference;
+    }
+    img{
+        width: 150px;
+        height: 90px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%,-50%);
+        opacity: 0;
+        transition: all linear 0.3s;
+    }
+
+</style>
+<body>
+<div id="main">
+    <div class="ele" id="ele1">
+        <h1>Morgan</h1>
+        <img src=https://images.unsplash.com/photo-1590926381089-9dd85237d887?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW9yZ2FuJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D alt="">
+    </div>
+    <div class="ele" id="ele1">
+        <h1>Google</h1>
+        <img src=https://images.unsplash.com/photo-1678483790053-71367bc7a02c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGdvb2dsZSUyMGxvZ298ZW58MHx8MHx8fDA%3D alt="">
+    </div>
+    <div class="ele" id="ele1">
+        <h1>Microsodt</h1>
+        <img src=https://images.unsplash.com/photo-1662947036644-ecfde1221ac7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWljcm9zb2Z0JTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D alt="">
+    </div>
+    <div class="ele" id="ele1">
+        <h1>Netflix</h1>
+        <img src=https://images.unsplash.com/photo-1661077150377-26922fb352bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmV0ZmxpeCUyMGxvZ298ZW58MHx8MHx8fDA%3D alt="">
+    </div>
+    
+</div>
+   <script>
+    let element = document.querySelectorAll(".ele");
+    
+
+    element.forEach(function(e){
+        let img = e.childNodes[3];
+    e.addEventListener("mousemove",function(e){
+        img.style.left = e.x+"px";
+        img.style.top = e.y+"px";
+        
+    })
+    e.addEventListener("mouseenter",function(e){
+        img.style.opacity = 1;
+    })
+    e.addEventListener("mouseleave",function(e){
+        img.style.opacity = 0;
+    })
+        
+    })
+    
+   </script> 
+</body>
+</html>
