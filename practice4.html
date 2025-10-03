@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Landing-page2</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.70/build/spline-viewer.js"></script>
+    <style>
+        *{
+
+            
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: none;
+        }
+        body{
+            /* overflow: hidden; */
+            color: white;
+            background-color: white;
+            background-attachment: fixed;
+            color: black;
+        }
+        header{
+            position: relative;
+        }
+        nav{
+            display: flex;
+            /* align-items: center; */
+            justify-content: space-between;
+            margin: 10px;
+            margin-top: 30px;
+            position: relative;
+        }
+        nav .cart-count{
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            text-align: center;
+            margin: -29px -12px 38px 17px;
+        }
+        nav img{
+            width: 48px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit:initial;
+            margin-top: -12px;
+        }
+        .list{
+            margin-left: 57%;
+        }
+        .list a{
+            display: inline-block;
+            margin-left: 23px;
+            color: black;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .list a:hover{
+            color :rgb(227, 27, 104);
+            text-shadow:0px 0px 32px black;
+            transform: translateY(-8px);
+            
+            
+        }
+        .icons{
+            display: flex;
+            flex-direction: column;
+            margin-left: 110px;
+        }
+        .foodbar{
+            position: absolute;
+            width: 20%;
+            height: 70vh;
+            background-color: black;
+            margin: -105px 0px 0px 140px;
+            animation: move-down 2s ease;
+        }
+        @keyframes move-down{
+            0%{
+                transform: translateY(-100%);
+            }
+            100%{transform:translateY(0%)}
+        }
+        .foodbar h1{
+            color: rgb(190, 185, 185);
+            text-align: center;
+            margin-top: 9px;
+        }
+        .foodbar img{
+            width: 165%;
+            height: 400px;
+            margin: -20px 0px -14px -80px;
+        }
+        .list1{
+            display: inline-block;
+            transform: rotate(90deg);
+            margin: 130px 0px 0px -80px;
+            word-spacing: 20px;
+            font-family: 'Times New Roman';
+            
+        }
+        .content{
+            width: 30%;
+           
+            float: right;
+            margin: 65px 147px 0px 0px;
+            animation: left-move 2s ease;
+        }
+        @keyframes left-move{
+            0%{transform: translateX(100%);}
+            100%{transform: translateX(0%);}
+        }
+                
+        .spline-robot {
+            flex: 1;
+            max-width: 300px; /* control robot size */
+            height: 300px;
+        }
+
+        .spline-robot spline-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .content h1{
+            font-size: 50px;
+            text-shadow: 0 0 32px red;
+            /* letter-spacing: 7px; */
+        }
+        .content p{
+            width: 71%;
+            margin-top: -23px;
+        }
+        .content .price{
+            display: flex;
+            gap: 40%;
+            margin-top: 30px;
+            
+        }
+        .price h3{
+            font-size: 31px;
+            margin-top: 2px;
+            color: red;
+        }
+        .price button{
+            background-color: black;
+            color: white;
+            width: 90px;
+            height: 40px;
+        }
+        .platform{
+            margin-top: 25%;
+            /* transform: translateY(-8px); */
+        }
+        .platform a i:hover{
+            transform: translateY(-8px);
+        }
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: absolute;
+            width: 58%;
+            left: 32rem;
+            top:25rem;
+            animation: move-up 2s ease-in-out;
+        }
+        @keyframes move-up{
+            0%{
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0);
+
+                opacity: 1;
+            }
+        }
+        .images{
+            width: 156px;
+            height: 23vh;
+            text-align: center;
+            background-color: black;
+            border-radius: 10px;
+            box-shadow: 12px 14px 58px black;
+        }
+        .images img{
+            position: absolute;
+            width: 13%;
+            top: -2rem;
+            border-radius: 5px;
+            animation: bounce 3s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0); 
+            }
+            50% {
+                transform: translateY(-30px); 
+            }
+            }
+        .images span{
+            position: relative;
+            top:3rem;
+            right: 35px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+
+        }
+        #cart_add{
+            cursor: pointer;
+        }
+        .images p{
+            position: relative;
+            top: 5rem;
+            color: white;
+            margin: -19px;
+            font-size: 14px;
+        }
+        .rating{
+            color: gold;
+            margin-top: 106px;
+        }
+
+        /* dark mode */
+        /* dark mode applied on body */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+body.dark-mode .list a {
+    color: white;
+}
+
+body.dark-mode nav i,
+body.dark-mode .platform i {
+    color: white;
+}
+
+body.dark-mode .images {
+    background-color: #222;
+}
+
+body.dark-mode .price h3 {
+    color: #ff5555;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href=""><i class="fa-solid fa-bars" style="color: #000000;"></i>
+            <div class="list">
+                <a href="#">Home</a>
+                <a href="#">Features</a>
+                <a href="#">Recipes</a>
+                <a href="#">Hotline</a>
+            </div>
+            <div class="icons">
+                <a href=""><i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i></a>
+                <span class="cart-count">0</span>
+                <div>
+                    <a href=""><i class="fa-solid fa-gear" style="color: #000000;"></i></a>
+                    <a href=""><i id="moon" class="fa-solid fa-moon" style="color: #000000;"></i></a>
+                </div>
+            </div>
+            <img src="https://i.pinimg.com/1200x/e6/ae/09/e6ae097ce28239977b19b0480c82748b.jpg" alt="" id="img1">
+        </nav>
+        <div class="foodbar">
+            <h1>foodbar</h1>
+            <img id="foodbar_img" src="image/img7.png" alt="">
+        </div>
+        <div class="list1">
+            <h4>material design process</h4> 
+        </div>
+        <div class="content">
+            <h1>Healthy Salad</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam iure est quo beatae dicta, reprehenderit nisi dolores </p>
+             <div class="price">
+                <h3>$28</h3>
+                <button>Order now</button>
+             </div>   
+             
+        </div>
+        <div class="platform">
+            <a href=""><i class="fa-brands fa-instagram" style="color: #000000;"></i></a>
+            <a href=""><i class="fa-brands fa-github" style="color: #000000;"></i></a>
+            <a href=""><i class="fa-brands fa-square-linkedin" style="color: #000000;"></i></a>
+            <a href=""><i class="fa-brands fa-google" style="color: #000000;"></i></a>
+            <a href=""><i class="fa-brands fa-facebook" style="color: #000000;"></i></a>
+        </div>
+        <div class="footer">
+            <div class="images">
+                <img src="image/img8.png" alt="">
+                <span>$23</span>
+                <p>Asparagus Wild</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-regular fa-star" style="color: #ffffff;"></i>
+                    <i class="fa-regular fa-star" style="color: #ffffff;"></i>
+                </div>
+                <a ><i id="cart_add" class="fa-solid fa-cart-plus" style="color: #ffffff;"></i></a>
+            </div>
+
+            <div class="images">
+                <img src="image/img9.png" alt="">
+                <span>$23</span>
+                <p>Asparagus Wild</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-regular fa-star" style="color: #ffffff;"></i>
+                    <i class="fa-regular fa-star" style="color: #000000;"></i>
+                </div>
+                <a ><i id="cart_add" class="fa-solid fa-cart-plus" style="color: #ffffff;"></i></a>
+            </div>
+
+            <div class="images">
+                <img src="image/img10.png" alt="">
+                <span>$23</span>
+                <p>Asparagus Wild</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-regular fa-star" style="color: #e4e4e4;"></i>
+                    <i class="fa-regular fa-star" style="color: #ffffff;"></i>
+                </div>
+                <a><i id="cart_add" class="fa-solid fa-cart-plus" style="color: #ffffff;"></i></a>
+            </div>
+
+            <div class="images">
+                <img src="image/img11.png" alt="">
+                <span>$23</span>
+                <p>Asparagus Wild</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-solid fa-star" style="color: #eeb417;"></i>
+                    <i class="fa-regular fa-star" style="color: #f2f2f2;"></i>
+                    <i class="fa-regular fa-star" style="color: #ffffff;"></i>
+                </div>
+                <a><i id="cart_add" class="fa-solid fa-cart-plus" style="color: #ffffff;"></i></a>
+            </div>
+        </div>
+    </header>
+    
+
+
+
+
+    <script>
+        let foodbar_img = document.getElementById("foodbar_img");
+        let images = document.querySelectorAll(".footer .images img");
+
+        images.forEach(img=>{
+            img.addEventListener('click',function(e){
+            foodbar_img.src = e.target.currentSrc
+            
+        })
+        })
+        let moon = document.getElementById("moon");
+
+        moon.addEventListener('click', function(){
+            document.body.classList.toggle("dark-mode");
+        });
+
+        let cart_count = document.querySelector(".cart-count");
+        let  cart_add = document.querySelectorAll("#cart_add");
+        let count = 0;
+
+        cart_add.forEach(item=>{
+            item.addEventListener('click',function(){
+                cart_count.textContent = count++;
+        })
+        })
+        
+
+
+
+    </script>
+</body>
+</html>
