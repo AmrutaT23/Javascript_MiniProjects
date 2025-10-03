@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Landing_Page1</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        body{
+            overflow: hidden;
+            color: white;
+            animation: fadeIn 1s ease-in-out;
+            background-color: white;
+            background-attachment: fixed;
+            color: black;
+        }
+        header{
+            width: 100%;
+            height: 100vh;
+            background-color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .star{
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            animation: twinkle 2s infinite;
+            /* box-shadow: 0 0 10px 2px rgba(255,255,255,0.5); */
+
+        }
+        @keyframes twinkle{
+            0%{
+                opacity: 0.5;
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0.5;
+            }
+        }
+        .navbar{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            animation: slideInFromTop 1s ease-in-out;
+            width: 100%;
+            height: 80px;
+            background-color:white;
+            box-shadow:0px 0px 61px -16px black;
+            
+        }
+        .navbar h1{
+            color: #1E40AF;
+        }
+        #img1{
+            width: 80px;
+            height: 80px;
+            animation: rotateIn 1s ease;
+        }
+        .navbar .center-nav a, .social a {
+            color: black;
+            margin-left: 15px;
+            font-size: 1.3rem;
+            transition:all 0.5s ease;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .navbar .center-nav a:first-child{
+            color: rgb(255,140,0);
+        }
+        .navbar .center-nav a:hover,
+        .social a :hover i{
+            color: rgb(255,140,0);
+            text-shadow: 0px 0px 30px rgb(255,140,0);
+        } 
+        .navbar .center-nav a{
+            position: relative;
+            text-decoration: none;
+        }
+        .navbar .center-nav a::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: rgb(255,140,0);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+            
+        }
+        .navbar .center-nav a:hover::before{
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        .text{
+            position: relative;
+            top: 3rem;
+            left: 6rem;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .text h1{
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation:fadeInUp 1s ease-in-out ;
+        }
+        .btn{
+            color: rgb(0, 0, 0);
+            border: 2px solid;
+            position: relative;
+            top: 3rem;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 14px;
+            padding-bottom: 14px;
+            border-radius: 6px;
+            transition: all 0.5s ease;
+            margin-right: 10px;
+            animation: fadeInUp 1s ease-in-out 0.5s backwards;
+        }  
+        .text .btn:hover{
+            background-color:rgb(255,140,0) ;
+            box-shadow: 0 0 10px 2px rgb(255,140,0);
+        }
+        .text p{
+            width: 46%;
+            animation: fadeInUp 1s ease-in-out 1s backwards;
+        }
+        .burger{
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            width: 90%;
+            padding: 20px;
+            animation: slideInFromBottom 1s ease-in-out 1.5s backwards;
+        }
+        .burger img{
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+            object-fit: cover;
+            border: 2px solid black;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease-in-out 2s backwards;
+        }
+        .burger img:hover{
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(234, 232, 232, 0.8);
+        }
+        .burger-toggle img{
+            position: absolute;
+            width: 38%;
+            height: 74%;
+            right: 47px;
+            top: 7rem;
+            filter:drop-shadow(63px 90px 392px);
+            animation: fadeInUp 1s ease-in-out2.5s backwards;
+
+        }
+        .burger,
+        .burger-toggle{
+            display: flex;
+        }
+        .burger-toggle img{
+            display: none;
+        }
+        .burger-toggle img.active{
+            display: block;
+        }
+        @keyframes fadeInUp{
+            from{
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromTop{
+            from{
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0);
+
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromBottom{
+            from{
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0);
+
+                opacity: 1;
+            }
+        }
+        @keyframes rotateIn{
+            from{
+                transform: rotate3d(0,0,1,-200deg);
+                opacity: 0;
+            }
+            to{
+                transform: none;
+                opacity: 1;
+            }
+        }
+            
+            
+
+        
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="stars"></div>
+        <div class="navbar">
+            <!-- <img id="img1" src="image.png" alt="Burger King logo"> -->
+             <h1>Burger King.</h1>
+            <div class="center-nav">
+                <a href="">Home</a>
+                <a href="">Menu</a>
+                <a href="">About</a>
+                <a href="">Shop</a>
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></a>
+                <a href=""><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></a>
+                <a href=""><i class="fa-solid fa-house" style="color: #000000;"></i></a>
+            </div>
+        </div>
+        <div class="text">
+            <h1>THE ULTIMATE <br>BURGER HAVEN</h1>
+            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus veritatis aperiam quaerat officiis tempora pariatur porro, cupiditate dignissimos sequi praesentium.</P>
+            <a href="" class="btn">Order Now</a>
+            <a href="" class="btn">View More</a>
+        </div>
+        <div class="burger">
+            <img src="image/img2.png" alt="" class="imgg">
+            <img src="image/img3.png" alt="" class="imgg">
+            <img src="image/img4.png" alt="" class="imgg">
+            <img src="image/img5.png" alt="" class="imgg">
+            <img src="image/img6.png" alt="" class="imgg">
+        </div>
+        <div class="burger-toggle">
+            <img src="image/img1.png" alt="" class="active">
+        </div>
+    </header>
+
+    <script>
+        let burger = document.querySelector(".burger");
+        let active = document.querySelector(".active");
+
+        burger.addEventListener('click',function(e){
+            if(e.target.tagName === "IMG"){ 
+                active.style.display = "block"; 
+                active.src = e.target.src;      
+            }
+        })
+    </script>
+</body>
+</html>
