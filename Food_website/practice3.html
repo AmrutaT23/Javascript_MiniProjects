@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Food-Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".img1").click(function(){
+          const $info = $(this).siblings(".ulist"); // ✅ get sibling ul
+          $info.fadeToggle(500,function(){
+            if($info.is(":visible")){
+              $info.find("li").hide().each(function(i){
+                $(this).delay(500 * i).fadeIn(500);
+              });
+            }else{
+              $info.find("li").hide();
+            }
+          });
+        });
+      });
+
+   $(window).scroll(function(){
+    if($(this).scrollTop() > 50){
+      $("header").css("background-color","orange");
+      $("nav a, .icons a").css("color","black");  // change links/icons
+    } else {
+      $("header").css("background","black");
+      $("nav a, .icons a").css("color","white"); // reset back
+    }
+  });
+
+$(document).ready(function(){
+  // Toggle dropdown on Services click
+  $("nav ul li a:contains('Services')").click(function(e){
+    e.preventDefault(); // prevent page jump
+    $(".co_services").fadeToggle("fast"); // smooth fade effect
+    $(".co_career").fadeOut("fast");      // hide career if open
+  });
+
+  // Toggle dropdown on Career click
+  $("nav ul li a:contains('Career')").click(function(e){
+    e.preventDefault(); // prevent page jump
+    $(".co_career").fadeToggle("fast");  // smooth fade effect
+    $(".co_services").fadeOut("fast");   // hide services if open
+  });
+
+  // Close dropdown when clicking outside both dropdowns and links
+  $(document).click(function(e){
+    if(!$(e.target).closest(".co_services, nav ul li a:contains('Services'), .co_career, nav ul li a:contains('Career')").length){
+      $(".co_services").fadeOut("fast");
+      $(".co_career").fadeOut("fast");
+    }
+  });
+    
+
+ 
+
+
+
+
+$("#t1").click(function(){
+  $(this).hide();
+  $("#t2").show();
+  $("header").addClass("nav_change");
+  $(".fimg").addClass("fimg_toggle");
+  $(".benefit").addClass("benefit_toggle");
+});
+
+$("#t2").click(function(){
+  $(this).hide();
+  $("#t1").show();
+  $("header").removeClass("nav_change");
+  $(".fimg").removeClass("fimg_toggle");
+ $(".benefit").removeClass("benefit_toggle");
+});
+
+
+
+});
+
+
+
+
+    </script>
+
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="./logo.png" alt="">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/Food_website/practice3.html">Home</a></li>
+        <li><a href="#">Career</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="#"><i class="fa-solid fa-user"></i></a>
+    </div>
+  </header>
+  
+ <div class="fimg">
+  <div class="mText">
+      <h3>Premium Restaurant</h3>
+      <h1>GOODNESS <br> BASKET</h1>
+      <h3>BEST HEALTHY SALAD <br>SERVED IN OUR Restaurant</h3>
+      <button>LEARN MORE</button>
+  </div>
+  <img class="img1" src="https://i.pinimg.com/1200x/a2/ad/0c/a2ad0c3c8e3df51531c1707339cf56e3.jpg" alt="">
+  <ul class="ulist">
+    <li>--Benefits--</li>
+    <li>Rich in vitamins</li>
+    <li>Boosts immunity</li>
+    <li>Supports weight loss</li>
+    <li>Hydrates body</li>
+  </ul>
+  <button class="btn1">Sign In</button>
+
+  <!-- Toggle Button -->
+
+  <div id="toggle">
+    <div id="t1"></div>
+    <div id="t2"></div>
+  </div>
+
+  
+  <div class="co_services">
+    <h1>About Services</h1>
+    <div class="service-columns">
+      <div class="column">
+        <a href="#">Dine-In Experience</a>
+        <a href="#">Online Ordering & Home Delivery</a>
+      </div>
+      <div class="column">
+        <a href="#">Takeaway / Pick-Up Service</a>
+        <a href="#">Catering for Events</a>
+      </div>
+      <div class="column">
+        <a href="#">Customized Meal Plans</a>
+        <a href="#">24/7 Customer Support</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="co_career">
+  <h1>Career Opportunities</h1>
+  <p>Right now there is no vacancy.</p>
+  <p>When vacancies arise, we will let you know.</p>
+</div>
+
+</div>
+
+  <div class="benefit">
+    <div class="benefitText">
+      <h1>Orange Benefit</h1>
+      <div class="boxes">
+        <div  class="box1">
+          <img src="https://i.pinimg.com/736x/e0/61/6a/e0616a23d55190f74bea137f0399fc3e.jpg" alt="">
+        </div>
+        <div class="box2">
+          <h3>Burst of Vitamin C, boost your immunity</h3>
+          <button class="btn">Learn More</button>
+        </div>
+      </div>
+    </div>
+    <div class="benefitImg">
+      <img class="img3" src="img3.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="fruitlist">
+    <div class="fruits">
+      <div class="I11">
+        <img src="https://i.pinimg.com/1200x/18/30/c4/1830c4c5a2ca4dab2240a3d422d5d3d5.jpg" alt="">
+        <h2>Fresh Oranges</h2>
+        <h3>₹120 / kg</h3>
+      </div>
+      <div class="I11">
+        <img src="https://i.pinimg.com/736x/2b/6c/cd/2b6ccd7ee335f148db7f8055dadd5b92.jpg" alt="">
+        <h2>Juicy Citrus</h2>
+        <h3>₹150 / kg</h3>
+      </div>
+      <div class="I11">
+        <img src="https://i.pinimg.com/1200x/ef/fd/a8/effda88ef1a4ccf52eb64e8c19c07f77.jpg" alt="">
+        <h2>Berry Delight</h2>
+        <h3>₹200 / bowl</h3>
+      </div>
+    </div>
+
+  </div>
+
+<footer>
+  <div class="container">
+  <div class="image-section">
+    <img src="https://i.pinimg.com/736x/c7/3d/e6/c73de62760a1a0403481026b6ac01ff3.jpg" alt="Cherries" />
+    <div class="hello-box">HELLO.</div>
+  </div>
+  <div class="menu-benefit">
+    <h2>OUR MENU BENEFIT</h2>
+    <div class="benefit-item">
+      <div class="benefit-icon">🍉</div>
+      <div class="benefit-text">
+        <strong>FRESH</strong>
+        <small>Packed with natural ingredients</small>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🍊</div>
+      <div class="benefit-text">
+        <strong>VITAMIN</strong>
+        <small>Rich in essential vitamins</small>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🥤</div>
+      <div class="benefit-text">
+        <strong>ORGANIC</strong>
+        <small>Sourced from organic farms</small>
+      </div>
+    </div>
+  </div>
+  <div class="opening-hours">
+    <h2>OPENING HOURS</h2>
+    <p><strong>Monday</strong> <span>9:00</span></p>
+    <p><strong>Tuesday</strong> <span>9:00</span></p>
+    <p><strong>Wednesday</strong> <span>9:00</span></p>
+    <p><strong>Thursday</strong> <span>9:00</span></p>
+  </div>
+</div>
+  <!-- <p>Copyright &copy; 2024 All Rights Reserved | Designed by Amruta</p> -->
+</footer>
+
+</body>
+</html>
